@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>smallChat</title>
+
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      h1 {
+        font-weight: 600;
+      }
+
+      #preview {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-top: 20px;
+        height: 200px;
+        overflow-y: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>smallChat</h1>
+
+    <label for="font">Font:</label>
+    <select id="font">
+      <option value="Arial">Arial</option>
+      <option value="Courier New">Courier New</option>
+      <option value="Verdana">Verdana</option>
+    </select>
+    <br /><br />
+
+    <label for="color">Font Color:</label>
+    <input type="color" id="color" value="#000000" />
+
+    <br /><br />
+
+    <label for="size">Size:</label>
+    <input type="range" id="size" min="10" max="36" value="16" />
+    <span id="size-label">16px</span>
+
+    <br /><br />
+    <div id="preview">
+      <p>User1: Hello World!</p>
+      <p>User2: Hello World!</p>
+      <p>User3: Hello World!</p>
+      <p>User4: Hello World!</p>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const captureCurrentFont = document.getElementById("font");
+        const captureFontColor = document.getElementById("color");
+        const captureFontSize = document.getElementById("size");
+        const sizeLabel = document.getElementById("size-label");
+
+        const previewChat = document.getElementById("preview");
+
+        captureCurrentFont.addEventListener("change", () => {
+          previewChat.style.fontFamily = captureCurrentFont.value;
+        });
+
+        captureFontColor.addEventListener("change", () => {
+          previewChat.style.color = captureFontColor.value;
+        });
+
+        captureFontSize.addEventListener("change", () => {
+          previewChat.style.fontSize = captureFontSize.value + "px";
+          sizeLabel.textContent = captureFontSize.value + "px";
+        });
+      });
+    </script>
+  </body>
+</html>
