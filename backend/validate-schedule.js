@@ -14,7 +14,16 @@ const validDays = [
 ];
 
 function validateEntry(req, res, next) {
-  let { currentDay } = req.body;
+  let {
+    currentDay,
+    streamTitle,
+    chosenGame,
+    startTime,
+    isCollab,
+    collabMembers,
+    onPlatform,
+    socialMediaPost,
+  } = req.body;
 
   if (!currentDay || typeof currentDay !== "string") {
     return res.status(400).json({ error: "Invalid entry for day!" });

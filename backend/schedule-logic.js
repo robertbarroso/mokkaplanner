@@ -4,9 +4,20 @@
  */
 
 const express = require("express");
+const fs = require("fs");
+const path = require("path");
 const { validateEntry } = require("./validate-schedule");
+
 const app = express();
 app.use(express.json());
+
+const currentScheduleFileLocation = path.join(
+  __dirname,
+  "current",
+  "current-schedule.json"
+);
+
+const currentSchedule = [];
 
 const daysOfTheWeek = [
   "Monday",
@@ -18,10 +29,10 @@ const daysOfTheWeek = [
   "Sunday",
 ];
 
-const currentSchedule = [];
-
-for (let i = 0; i < daysOfTheWeek.length; i++) {
-  currentSchedule.push(createEmptyDay(daysOfTheWeek[i]));
+function createBlankSchedule() {
+  for (let i = 0; i < daysOfTheWeek.length; i++) {
+    currentSchedule.push(createEmptyDay(daysOfTheWeek[i]));
+  }
 }
 
 function createEmptyDay(dayName) {
@@ -61,8 +72,6 @@ function updateDay(
   }
 }
 
-console.log(currentSchedule);
-
 app.get("/", (req, res) => {
   res.send("Hello from Express!");
 });
@@ -91,3 +100,23 @@ app.post("/schedule/update", validateEntry, (req, res) => {
 
   res.json({ message: "Schedule updated successfully!" });
 });
+
+if (fs.existsSync(currentScheduleFileLocation)) {
+  const existingScheduleFile = fs.readFileSync(
+    currentScheduleFileLocation,
+    "utf8"
+  );
+  const parsedExisitingScheduleFile = JSON.parse(existingScheduleFile);
+  currentSchedule.length = 0;
+  for (let i = 0; i < parsedExisitingScheduleFile.length; i++) {
+    currentSchedule.push(parsedExisitingScheduleFile[i]);
+  }
+  console.log(currentSchedule);
+  console.log("File Exists!");
+} else {
+  const newBlank = createBlankSchedule();
+  const newBlankString = JSON.stringify(currentSchedule);
+  fs.writeFileSync(currentScheduleFileLocation, newBlankString);
+
+  console.log("Created new schedule file!");
+}
