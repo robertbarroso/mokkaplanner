@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Hello!</h1>
+    <button id="test-submit">submit</button>
+    <pre id="output"></pre>
+
+    <script>
+      const submitButton = document.getElementById("test-submit");
+      const outputArea = document.getElementById("output");
+
+      submitButton.addEventListener("click", () => {
+        fetch("http://localhost:3000/schedule")
+          .then((response) => response.json())
+          .then((data) => {
+            outputArea.innerHTML = "";
+            data.forEach((day) => {
+              const createDiv = document.createElement("div");
+              createDiv.innerHTML = `
+  <h2>${day.currentDay}</h2>
+  <div id="stream-title">
+    <p>Stream Title</p>
+    <textarea
+      id="stream-title-textfield"
+      maxlength="140"
+      rows="2"
+      style="resize: vertical; width: 100%;"
+      placeholder="Enter stream title"
+    >${day.streamTitle}</textarea>
+    <div class="character-limit"></div>
+  </div>
+  <p>Selected Game: ${day.chosenGame}</p>
+  <p>Start Time: ${day.startTime}</p>
+  <p>Is a collab? ${day.isCollab ? "Yes" : "No"}</p>
+  <p>Collab Members: ${day.collabMembers.join(", ")}</p>
+  <p>Streaming Platform: ${day.onPlatform}</p>
+  <p>Social Media Post: ${day.socialMediaPost}</p>
+`;
+              outputArea.appendChild(createDiv);
+              const inputFieldTextCount = createDiv.querySelector(
+                "#stream-title-textfield"
+              );
+              const charLimit = createDiv.querySelector(".character-limit");
+
+              charLimit.textContent = `${inputFieldTextCount.value.length}/140`;
+
+              inputFieldTextCount.addEventListener("input", () => {
+                charLimit.textContent = `${inputFieldTextCount.value.length}/140`;
+              });
+            });
+          });
+      });
+    </script>
+  </body>
+</html>

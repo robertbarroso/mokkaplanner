@@ -1,0 +1,33 @@
+#output {
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+  gap: 1ch;
+  width: 100%;
+}
+
+#stream-title {
+  background-color: blueviolet;
+  display: grid;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1ch;
+}
+
+#stream-title-textfield {
+  font-size: 2.5ch;
+  border-radius: 1.3ch;
+  border-style: none;
+  padding: 1ch;
+  padding-inline-start: 1.6ch;
+  background-color: rgb(243, 243, 243);
+  color: rgb(92, 92, 92);
+
+  width: 200px;
+  min-width: 150px;
+  max-width: 200px;
+  box-sizing: border-box;
+}
+
+.character-limit {
+}
