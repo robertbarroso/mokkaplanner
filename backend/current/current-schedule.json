@@ -1,23 +1,23 @@
 [
   {
     "currentDay": "Monday",
-    "streamTitle": "",
-    "chosenGame": "",
-    "startTime": "",
+    "streamTitle": "My Awesome Stream",
+    "chosenGame": "Minecraft",
+    "startTime": "6:00 PM",
     "isCollab": false,
     "collabMembers": [],
-    "onPlatform": "",
-    "socialMediaPost": ""
+    "onPlatform": "Twitch",
+    "socialMediaPost": "Join me for Minecraft Monday!"
   },
   {
     "currentDay": "Tuesday",
-    "streamTitle": "",
-    "chosenGame": "",
-    "startTime": "",
+    "streamTitle": "My Awesome Stream",
+    "chosenGame": "Minecraft",
+    "startTime": "6:00 PM",
     "isCollab": false,
     "collabMembers": [],
-    "onPlatform": "",
-    "socialMediaPost": ""
+    "onPlatform": "Twitch",
+    "socialMediaPost": "Join me for Minecraft Monday!"
   },
   {
     "currentDay": "Wednesday",
