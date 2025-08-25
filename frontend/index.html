@@ -5,57 +5,131 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <h1>Hello!</h1>
+    <div class="main-container">
+      <div id="left-panel" class="box-container"></div>
+      <div id="right-panel" class="box-container">
+        <div id="monday-container" class="day-theme">
+          <div id="inside-content">
+            <div class="add-remove"></div>
+            <div class="weekday-time-container">
+              <div class="weekday-title">Monday</div>
+              <div class="time-timezone-selector">
+                <div class="time-selector"></div>
+                <div class="timezone-selector"></div>
+              </div>
+            </div>
+            <div class="stream-title-subtitle">
+              <div class="stream-title"></div>
+              <div class="stream-subtitle"></div>
+            </div>
+          </div>
+        </div>
+        <div id="tuesday-container" class="day-theme">
+          <div id="inside-content">
+            <div class="add-remove"></div>
+            <div class="weekday-time-container">
+              <div class="weekday-title">Tuesday</div>
+              <div class="time-timezone-selector">
+                <div class="time-selector"></div>
+                <div class="timezone-selector"></div>
+              </div>
+            </div>
+            <div class="stream-title-subtitle">
+              <div class="stream-title"></div>
+              <div class="stream-subtitle"></div>
+            </div>
+          </div>
+        </div>
+        <div id="wednesday-container" class="day-theme">
+          <div id="inside-content">
+            <div class="add-remove"></div>
+            <div class="weekday-time-container">
+              <div class="weekday-title">Wednesday</div>
+              <div class="time-timezone-selector">
+                <div class="time-selector"></div>
+                <div class="timezone-selector"></div>
+              </div>
+            </div>
+            <div class="stream-title-subtitle">
+              <div class="stream-title"></div>
+              <div class="stream-subtitle"></div>
+            </div>
+          </div>
+        </div>
+        <div id="thursday-container" class="day-theme">
+          <div id="inside-content">
+            <div class="add-remove"></div>
+            <div class="weekday-time-container">
+              <div class="weekday-title">Thursday</div>
+              <div class="time-timezone-selector">
+                <div class="time-selector"></div>
+                <div class="timezone-selector"></div>
+              </div>
+            </div>
+            <div class="stream-title-subtitle">
+              <div class="stream-title"></div>
+              <div class="stream-subtitle"></div>
+            </div>
+          </div>
+        </div>
+        <div id="friday-container" class="day-theme">
+          <div id="inside-content">
+            <div class="add-remove"></div>
+            <div class="weekday-time-container">
+              <div class="weekday-title">Friday</div>
+              <div class="time-timezone-selector">
+                <div class="time-selector"></div>
+                <div class="timezone-selector"></div>
+              </div>
+            </div>
+            <div class="stream-title-subtitle">
+              <div class="stream-title"></div>
+              <div class="stream-subtitle"></div>
+            </div>
+          </div>
+        </div>
+        <div id="saturday-container" class="day-theme">
+          <div id="inside-content">
+            <div class="add-remove"></div>
+            <div class="weekday-time-container">
+              <div class="weekday-title">Saturday</div>
+              <div class="time-timezone-selector">
+                <div class="time-selector"></div>
+                <div class="timezone-selector"></div>
+              </div>
+            </div>
+            <div class="stream-title-subtitle">
+              <div class="stream-title"></div>
+              <div class="stream-subtitle"></div>
+            </div>
+          </div>
+        </div>
+        <div id="sunday-container" class="day-theme">
+          <div id="inside-content">
+            <div class="add-remove"></div>
+            <div class="weekday-time-container">
+              <div class="weekday-title">Sunday</div>
+              <div class="time-timezone-selector">
+                <div class="time-selector"></div>
+                <div class="timezone-selector"></div>
+              </div>
+            </div>
+            <div class="stream-title-subtitle">
+              <div class="stream-title"></div>
+              <div class="stream-subtitle"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <button id="test-submit">submit</button>
-    <pre id="output"></pre>
-
-    <script>
-      const submitButton = document.getElementById("test-submit");
-      const outputArea = document.getElementById("output");
-
-      submitButton.addEventListener("click", () => {
-        fetch("http://localhost:3000/schedule")
-          .then((response) => response.json())
-          .then((data) => {
-            outputArea.innerHTML = "";
-            data.forEach((day) => {
-              const createDiv = document.createElement("div");
-              createDiv.innerHTML = `
-  <h2>${day.currentDay}</h2>
-  <div id="stream-title">
-    <p>Stream Title</p>
-    <textarea
-      id="stream-title-textfield"
-      maxlength="140"
-      rows="2"
-      style="resize: vertical; width: 100%;"
-      placeholder="Enter stream title"
-    >${day.streamTitle}</textarea>
-    <div class="character-limit"></div>
-  </div>
-  <p>Selected Game: ${day.chosenGame}</p>
-  <p>Start Time: ${day.startTime}</p>
-  <p>Is a collab? ${day.isCollab ? "Yes" : "No"}</p>
-  <p>Collab Members: ${day.collabMembers.join(", ")}</p>
-  <p>Streaming Platform: ${day.onPlatform}</p>
-  <p>Social Media Post: ${day.socialMediaPost}</p>
-`;
-              outputArea.appendChild(createDiv);
-              const inputFieldTextCount = createDiv.querySelector(
-                "#stream-title-textfield"
-              );
-              const charLimit = createDiv.querySelector(".character-limit");
-
-              charLimit.textContent = `${inputFieldTextCount.value.length}/140`;
-
-              inputFieldTextCount.addEventListener("input", () => {
-                charLimit.textContent = `${inputFieldTextCount.value.length}/140`;
-              });
-            });
-          });
-      });
-    </script>
   </body>
 </html>

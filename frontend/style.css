@@ -1,3 +1,44 @@
+/* 
+Design for both larger div elements. 
+Specifics for each can be found below
+*/
+
+.container {
+  flex-direction: row;
+  display: grid;
+  width: 100%;
+}
+
+.box-container {
+  height: 900px;
+  border: 1px solid black;
+  box-sizing: border-box;
+  display: flex;
+}
+
+#left-panel {
+  width: 50%;
+  float: left;
+}
+
+#right-panel {
+  width: 50%;
+  float: right;
+  display: flex;
+  flex-direction: column;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  gap: 10px;
+  background-color: black;
+}
+
+.day-theme {
+  height: 100px;
+  padding-top: 5px;
+  border-radius: 9px;
+  padding-left: 20px;
+}
+
 #output {
   flex-direction: row;
   display: flex;
@@ -6,28 +47,84 @@
   width: 100%;
 }
 
-#stream-title {
-  background-color: blueviolet;
-  display: grid;
-  flex-direction: column;
+#inside-content {
+  display: flex;
+  flex-direction: row;
   align-items: flex-start;
-  padding: 1ch;
+  gap: 1rem;
 }
 
-#stream-title-textfield {
-  font-size: 2.5ch;
-  border-radius: 1.3ch;
-  border-style: none;
-  padding: 1ch;
-  padding-inline-start: 1.6ch;
-  background-color: rgb(243, 243, 243);
-  color: rgb(92, 92, 92);
-
-  width: 200px;
-  min-width: 150px;
-  max-width: 200px;
-  box-sizing: border-box;
+.add-remove {
+  background-color: rgb(95, 165, 99);
+  width: 60px;
+  height: 40px;
+  border-radius: 10px;
+  margin-top: 30px;
 }
 
-.character-limit {
+.weekday-title {
+  font-family: "Outfit", sans-serif;
+  font-size: 40px;
+  color: whitesmoke;
+
+  width: 225px;
+  height: 60px;
+  margin-left: 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 5px;
+}
+
+.time-timezone-selector {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 130px;
+  height: 30px;
+  margin-left: 10px;
+}
+
+.time-selector {
+  height: 30px;
+  width: 100px;
+  background-color: rgb(244, 244, 244);
+  border-radius: 20px;
+}
+
+.timezone-selector {
+  height: 30px;
+  width: 100px;
+  background-color: rgb(113, 53, 242);
+  border-radius: 20px;
+  margin-left: 10px;
+}
+
+.weekday-time-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.stream-title-subtitle {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 550px;
+  height: 90px;
+  margin-left: 25px;
+  margin-top: 2px;
+}
+
+.stream-title {
+  background-color: blueviolet;
+  height: 60px;
+  width: 550px;
+}
+
+.stream-subtitle {
+  background-color: blueviolet;
+  height: 35px;
+  width: 550px;
 }
