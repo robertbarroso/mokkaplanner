@@ -1,7 +1,7 @@
 ![alt text](https://github.com/robertbarroso/mochaCal/blob/main/SVG/1x/mochaCal_Logo__Thin_Small.png "mochaCal Logo")
 
 
-# mochaCal
+# Mokka Planner
 A small program what helps streamers organize their weekely stream schedules. With an easy wasy to add and modify existing plans, streamers can add their weekly schedule and export their schedule to be further posted on social media. 
 
 ## Features
